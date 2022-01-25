@@ -1,6 +1,6 @@
 # gRPC Echo
 A test gRPC application.  
-gRPC Echo is based upon [whrereami](https://github.com/kazshinohara/whereami) which is a Rest API
+gRPC Echo is based upon [whereami](https://github.com/kazshinohara/whereami) which is a Rest API
 teaching your Pod's hostname, request header value, Google Cloud region etc.  
 As of now, only server code is available, please take your favorite gRPC client tool.
 
@@ -68,5 +68,19 @@ Server streaming RPC
 }
 {
   "hostname": "Kazuus-MacBook-Air.local"
+}
+```
+
+via ASM
+```shell
+❯ echo '{}' | evans --host asm.gcpx.org --port 443 -t -r cli call EchoService.GetHostname                                            (asm-cluster-01/default)
+{
+  "hostname": "grpc-echo-68b8797599-lq826"
+}
+```
+```shell
+❯ echo '{ "interval": 1, "number_of_response": 10 }' | evans --host asm.gcpx.org --port 443 -t -r cli call EchoService.GetHostnameServerStream
+{
+  "hostname": "grpc-echo-68b8797599-wlrkx"
 }
 ```

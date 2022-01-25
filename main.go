@@ -27,6 +27,8 @@ type EchoServiceServer struct {
 	pb.UnimplementedEchoServiceServer
 }
 
+//TODO: add logging to each method
+
 func (s *EchoServiceServer) GetAll(ctx context.Context, empty *emptypb.Empty) (*pb.All, error) {
 	region := resolveRegion()
 	cluster := resolveCluster()
