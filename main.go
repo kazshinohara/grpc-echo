@@ -109,6 +109,7 @@ func (s *EchoServiceServer) GetHostnameServerStream(conf *pb.ServerStreamConfig,
 	for i := 0; i < int(conf.NumberOfResponse); i++ {
 		if err := stream.Send(&pb.Hostname{
 			Hostname: hostname,
+			Timestamp: time.Now().Format(time.RubyDate),
 		}); err != nil {
 			return err
 		}

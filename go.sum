@@ -164,6 +164,8 @@ github.com/kazshinohara/pb v0.0.0-20220123140404-968bfe56dbc5 h1:0OkLk/M8ovhyKNc
 github.com/kazshinohara/pb v0.0.0-20220123140404-968bfe56dbc5/go.mod h1:wIorRXc8KAJ+fiHrTm/9qZIVfY4fg4NtLqvg/PifrOE=
 github.com/kazshinohara/pb v0.0.0-20220123144241-ebbbfaa573f4 h1:hcZ6u9dT9V03vaSO2p7Iytsz8j3vMrLbH/IO6H304Sk=
 github.com/kazshinohara/pb v0.0.0-20220123144241-ebbbfaa573f4/go.mod h1:wIorRXc8KAJ+fiHrTm/9qZIVfY4fg4NtLqvg/PifrOE=
+github.com/kazshinohara/pb v0.0.0-20220125135916-0876b78d37cf h1:Ox8CAi3KN/6PgEKLgeMNl5mOgYKVHaoZ6kUMyulFd7Y=
+github.com/kazshinohara/pb v0.0.0-20220125135916-0876b78d37cf/go.mod h1:wIorRXc8KAJ+fiHrTm/9qZIVfY4fg4NtLqvg/PifrOE=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
