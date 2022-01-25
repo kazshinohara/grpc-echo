@@ -6,9 +6,12 @@ import (
 	"fmt"
 	pb "github.com/kazshinohara/pb/grpc-echo"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	health "google.golang.org/grpc/health/grpc_health_v1"
 	meta "google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
 	"google.golang.org/grpc/reflection"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"log"
 	"net"
@@ -107,7 +110,7 @@ func (s *EchoServiceServer) GetHostnameServerStream(conf *pb.ServerStreamConfig,
 		if err := stream.Send(&pb.Hostname{
 			Hostname: hostname,
 		}); err != nil {
-			return  err
+			return err
 		}
 		time.Sleep(time.Second * time.Duration(conf.Interval))
 	}
@@ -176,6 +179,19 @@ func resolveSourceIp(ctx context.Context) string {
 	return "unknown"
 }
 
+// HealthServer For Readiness Probe by K8s
+type HealthServer struct{}
+
+func (h *HealthServer) Check(context.Context, *health.HealthCheckRequest) (*health.HealthCheckResponse, error) {
+	return &health.HealthCheckResponse{
+		Status: health.HealthCheckResponse_SERVING,
+	}, nil
+}
+
+func (h *HealthServer) Watch(*health.HealthCheckRequest, health.Health_WatchServer) error {
+	return status.Error(codes.Unimplemented, "service watch is not implemented current version.")
+}
+
 func main() {
 	lis, err := net.Listen("tcp", ":"+port)
 	if err != nil {
@@ -183,6 +199,7 @@ func main() {
 	}
 	s := grpc.NewServer()
 	pb.RegisterEchoServiceServer(s, &EchoServiceServer{})
+	health.RegisterHealthServer(s, &HealthServer{})
 	reflection.Register(s)
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
