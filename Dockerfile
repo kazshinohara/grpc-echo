@@ -11,7 +11,7 @@ RUN go build -v -o grpc-echo .
 
 FROM debian:buster-slim
 RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    ca-certificates && \
+    ca-certificates wget && \
     rm -rf /var/lib/apt/lists/*
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
