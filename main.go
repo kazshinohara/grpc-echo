@@ -35,16 +35,18 @@ type EchoServiceServer struct {
 func (s *EchoServiceServer) GetAll(ctx context.Context, empty *emptypb.Empty) (*pb.All, error) {
 	region := resolveRegion()
 	cluster := resolveCluster()
+	instanceId := resolveInstanceId()
 	hostname := resolveHostname()
 	sourceIp := resolveSourceIp(ctx)
 
 	return &pb.All{
-		Kind:     kind,
-		Version:  version,
-		Region:   region,
-		Cluster:  cluster,
-		Hostname: hostname,
-		SourceIp: sourceIp,
+		Kind:       kind,
+		Version:    version,
+		Region:     region,
+		Cluster:    cluster,
+		InstanceId: instanceId,
+		Hostname:   hostname,
+		SourceIp:   sourceIp,
 	}, nil
 }
 

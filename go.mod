@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	cloud.google.com/go/compute/metadata v0.2.3
-	github.com/kazshinohara/pb v0.0.0-20230220045812-614839894dfd
+	github.com/kazshinohara/pb v0.0.0-20230220061854-4752f3b74bfe
 	google.golang.org/grpc v1.53.0
 	google.golang.org/protobuf v1.28.1
 )

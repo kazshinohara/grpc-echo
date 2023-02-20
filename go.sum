@@ -9,6 +9,8 @@ github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
 github.com/kazshinohara/pb v0.0.0-20230220045812-614839894dfd h1:4rv8/FadFwavJSL5B9d34wZ64XV3kt29nkW2iiXu/1M=
 github.com/kazshinohara/pb v0.0.0-20230220045812-614839894dfd/go.mod h1:wIorRXc8KAJ+fiHrTm/9qZIVfY4fg4NtLqvg/PifrOE=
+github.com/kazshinohara/pb v0.0.0-20230220061854-4752f3b74bfe h1:z9C9wa3K7RRiddYxlL5fAl5UUry0iwxyW5lOqsx0/yw=
+github.com/kazshinohara/pb v0.0.0-20230220061854-4752f3b74bfe/go.mod h1:wIorRXc8KAJ+fiHrTm/9qZIVfY4fg4NtLqvg/PifrOE=
 golang.org/x/net v0.7.0 h1:rJrUqqhjsgNp7KqAIc25s9pZnjU7TUcSY7HcVZjdn1g=
 golang.org/x/net v0.7.0/go.mod h1:2Tu9+aMcznHK/AK1HMvgo6xiTLG5rD5rZLDS+rp2Bjs=
 golang.org/x/sys v0.5.0 h1:MUK/U/4lj1t1oPg0HfuXDN/Z1wv31ZJ/YcPiGccS4DU=
