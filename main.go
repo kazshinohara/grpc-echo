@@ -74,6 +74,12 @@ func (s *EchoServiceServer) GetCluster(ctx context.Context, empty *emptypb.Empty
 	}, nil
 }
 
+func (s *EchoServiceServer) GetInstanceId(ctx context.Context, empty *emptypb.Empty) (*pb.InstanceId, error) {
+	instanceId := resolveInstanceId()
+	return &pb.InstanceId{
+		InstanceId: instanceId,
+	}, nil
+}
 func (s *EchoServiceServer) GetHostname(ctx context.Context, empty *emptypb.Empty) (*pb.Hostname, error) {
 	hostname := resolveHostname()
 	return &pb.Hostname{
@@ -108,7 +114,7 @@ func (s *EchoServiceServer) GetHostnameServerStream(conf *pb.ServerStreamConfig,
 	hostname := resolveHostname()
 	for i := 0; i < int(conf.NumberOfResponse); i++ {
 		if err := stream.Send(&pb.Hostname{
-			Hostname: hostname,
+			Hostname:  hostname,
 			Timestamp: time.Now().Format(time.RubyDate),
 		}); err != nil {
 			return err
@@ -145,6 +151,20 @@ func resolveCluster() string {
 			return "unknown"
 		}
 		return cluster
+	}
+	return "unknown"
+}
+
+func resolveInstanceId() string {
+	if !metadata.OnGCE() {
+		log.Println("This app is not running on GCE")
+	} else {
+		instanceId, err := metadata.InstanceID()
+		if err != nil {
+			log.Printf("could not get instance id: %v", err)
+			return "unknown"
+		}
+		return instanceId
 	}
 	return "unknown"
 }
